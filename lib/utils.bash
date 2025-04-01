@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# set -euo pipefail
+set -euo pipefail
 
 OWNER=WhatsApp
 REPO=erlang-language-platform
