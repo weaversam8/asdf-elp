@@ -4,7 +4,7 @@
 
 OWNER=WhatsApp
 REPO=erlang-language-platform
-GH_REPO="https://github.com/${OWNER}/${REPO}/"
+GH_REPO="https://github.com/${OWNER}/${REPO}"
 TOOL_NAME="elp"
 TOOL_TEST="elp -h"
 
