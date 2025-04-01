@@ -28,6 +28,8 @@ sort_versions() {
 list_all_versions() {
 	# find OTP versions for each tag:
 	releases=$(curl -s "https://api.github.com/repos/${OWNER}/${REPO}/releases" | jq -c '.[]')
+	os=$(get_os | awk '{print $1}')
+	arch=$(get_arch)
 
 	if [[ -n "$releases" ]]; then
 		while IFS=$'\n' read -r release; do
@@ -37,7 +39,7 @@ list_all_versions() {
 			if [[ -n "$assets" ]]; then
 				while IFS= read -r asset; do
 					if [[ -n "$asset" ]]; then
-						if [[ ! "$asset" == *"vsix"* ]]; then
+						if [[ "$asset" == *"$os-$arch"*".tar.gz" ]]; then
 							otp_version=$(echo "$asset" | sed -E 's/.*(otp-[0-9]+(\.[0-9]+)?).*/\1/')
 							if [[ -n "$otp_version" ]]; then
 								echo "${tag}_${otp_version}"
