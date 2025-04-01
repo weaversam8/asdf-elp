@@ -30,6 +30,7 @@ list_all_versions() {
 	releases=$(curl -s "https://api.github.com/repos/${OWNER}/${REPO}/releases" | jq -c '.[]')
 	os=$(get_os | awk '{print $1}')
 	arch=$(get_arch)
+	echo "Looking for versions matching $os and $arch" >&2
 
 	if [[ -n "$releases" ]]; then
 		while IFS=$'\n' read -r release; do
