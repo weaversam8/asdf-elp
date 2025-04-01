@@ -55,7 +55,7 @@ list_all_versions() {
 }
 
 download_release() {
-	local version build filename url
+	local version filename url
 	version="$1"
 	filename="$2"
 
@@ -67,7 +67,7 @@ download_release() {
 
 	url="$GH_REPO/releases/download/${tag}/elp-$os_1-$arch-$os_2-$otp.tar.gz"
 
-	echo "* Downloading $TOOL_NAME release $build..."
+	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
