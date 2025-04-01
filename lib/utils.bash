@@ -120,9 +120,6 @@ get_arch() {
 	arch="$(uname -m)"
 
 	case $arch in
-	x86_64)
-		echo amd64
-		;;
 	arm64)
 		echo aarch64
 		;;
